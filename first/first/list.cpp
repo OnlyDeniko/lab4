@@ -40,15 +40,3 @@ list & list::operator=(const list & tmp) {
 list::~list() {
 	delete head;
 }
-
-int list::pop() {
-	if (head != nullptr) {
-		elem * prev = head;
-		head = head->get_next();
-		int ans = prev->get_val();
-		prev->set_next(nullptr);
-		delete prev;
-		return ans;
-	}
-	throw 1;
-}
