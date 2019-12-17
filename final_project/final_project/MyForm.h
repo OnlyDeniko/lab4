@@ -56,25 +56,6 @@ namespace finalproject {
 	private: System::Windows::Forms::DataGridView^  q7;
 	private: System::Windows::Forms::DataGridView^  q8;
 	private: System::Windows::Forms::DataGridView^  q9;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	private:
 		/// <summary>
 		/// Обязательная переменная конструктора.
@@ -378,6 +359,7 @@ namespace finalproject {
 		int *mas;
 		int n;
 		int max_len_of_number = 0;
+		int ten;
 		void show_res() {
 			std::string kek;
 			for (int i = 0; i < n; i++) {
@@ -399,6 +381,7 @@ namespace finalproject {
 			}
 			input_textBox->ReadOnly = true;
 			show_res();
+			ten = 1;
 		}
 	private: 
 		void draw_queues() {
@@ -490,7 +473,8 @@ namespace finalproject {
 				return;
 			}
 			for (int i = 0; i < n; i++) {
-				q[calc(mas[i], step)].push(mas[i]);
+				int kek = ten;
+				q[calc(mas[i], kek)].push(mas[i]);
 			}
 			draw_queues();
 			int index = 0;
@@ -501,6 +485,7 @@ namespace finalproject {
 			}
 			show_res();
 			step++;
+			ten *= 10;
 		}
 };
 }

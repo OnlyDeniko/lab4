@@ -12,9 +12,7 @@ void get_words_one_razdel(std::string t, std::string *w, int &k) {
 }
 
 int calc(const int & x, const int & index) {
-	std::string jopa = std::to_string(x);
-	while (jopa.size() <= index) jopa = '0' + jopa;
-	return jopa[jopa.size() - index - 1] - '0';
+	return (x / index) % 10;
 }
 
 int max_cnt(const int & x) {

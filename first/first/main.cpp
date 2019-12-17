@@ -15,9 +15,7 @@ Queue mas[10];
 mt19937 gen(chrono::high_resolution_clock::now().time_since_epoch().count());
 
 int calc(const int & x, const int & index) {
-	string jopa = to_string(x);
-	while (jopa.size() <= index) jopa = '0' + jopa;
-	return jopa[jopa.size() - index - 1] - '0';
+	return (x / index) % 10;
 }
 
 int max_cnt(const int & x) {
@@ -35,7 +33,7 @@ int* gen_mas(const int & len) {
 }
 
 int main() {
-	int n = 100;
+	int n = 1000;
 	int* kek = gen_mas(n);
 	vector<int> qwe(n);
 	for (int i = 0; i < n; i++) qwe[i] = kek[i];
@@ -44,9 +42,10 @@ int main() {
 	for (int i = 0; i < n; i++) {
 		ma = max(ma, max_cnt(kek[i]));
 	}
+	int ten = 1;
 	for (int i = 0; i < ma; i++) {
 		for (int j = 0; j < n; j++) {
-			mas[calc(kek[j], i)].push(kek[j]);
+			mas[calc(kek[j], ten)].push(kek[j]);
 		}
 		int index = 0;
 		for (int j = 0; j < 10; j++) {
@@ -57,6 +56,7 @@ int main() {
 		for (int j = 0; j < n; j++) {
 			cout << kek[j] << ' ';
 		}
+		ten *= 10;
 		cout << '\n' << '\n';
 	}
 	/*for (int i = 0; i < n; i++) {
@@ -64,7 +64,7 @@ int main() {
 	}
 	cout << '\n';*/
 	for (int i = 0; i < n; i++) {
-		assert(kek[i] == qwe[i]);
+		if (kek[i] != qwe[i]) assert(0);
 	}
 	return 0;
 }
