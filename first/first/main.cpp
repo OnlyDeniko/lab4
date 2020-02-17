@@ -12,6 +12,10 @@ using namespace std;
 
 int main() {
 	list kek;
+	kek.insert(1);
+	kek.insert(2);
+	kek.del(1);
 	
+	cout << kek;
 	return 0;
 }

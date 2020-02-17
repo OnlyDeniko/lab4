@@ -72,6 +72,7 @@ void list::shift() {
 void list::del(int k) {
 	if (!head) return;
 	elem * cur = head;
+	int ok = 0;
 	while (cur) {
 		if (cur->get_next() && cur->get_next()->get_next() == nullptr && cur->get_next()->get_val() == k) {
 			elem * tmp = cur->get_next();
@@ -88,10 +89,15 @@ void list::del(int k) {
 				delete tmp;
 			}
 			else {
-				head = nullptr;
+				ok = 1;
+				break;
 			}
 		}	
 		cur = cur->get_next();
+	}
+	if (ok) {
+		delete head;
+		head = NULL;
 	}
 }
 
